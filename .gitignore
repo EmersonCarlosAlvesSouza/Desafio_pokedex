@@ -1,0 +1,29 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.log
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Django stuff
+db.sqlite3
+media/
+staticfiles/
+*.sqlite3
+
+# Env vars
+.env
+*.env
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Node (quando criarmos o front)
+node_modules/
+dist/
