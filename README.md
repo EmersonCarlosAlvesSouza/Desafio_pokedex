@@ -15,7 +15,7 @@ Frontend: ⚠️ Parcialmente implementado. A listagem principal e a autenticaç
 
 Requisitos: Python 3.12+
 # 1. Criar e ativar ambiente virtual
-python -m venv .venv
+python -m venv .venv <br>
 .\.venv\Scripts\activate      # Windows
 source .venv/bin/activate     # Linux/macOS
 
