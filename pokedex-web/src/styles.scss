@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root{
+  --bg: #f6f6f7;
+  --card: #ffffff;
+  --text: #1f2328;
+  --muted: #717680;
+  --line: #ebecef;
+  --brand: #f16a0a;     /* laranja topo */
+  --brand-2: #6750f5;   /* faixa roxa */
+  --chip: #eef0f5;
+  --chip-text:#3a3f4b;
+  --ok: #16a34a;
+  --danger:#ef4444;
+  --shadow: 0 6px 16px rgba(15, 23, 42, .08);
+  --radius: 16px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* utilitários pequenos */
+.container{max-width:1160px;margin:0 auto;padding:0 20px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--chip);color:var(--chip-text);border-radius:999px;font-size:12px;font-weight:600}
+.badge-dot{width:8px;height:8px;border-radius:50%}

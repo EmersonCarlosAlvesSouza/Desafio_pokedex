@@ -1,0 +1,6 @@
+<!-- src/app/pages/home/home.html -->
+<h1>Pokédex — Front</h1>
+<p *ngIf="pingResult; else loading">
+  API diz: {{ pingResult.status }} — {{ pingResult.message }}
+</p>
+<ng-template #loading>Chamando /api/ping...</ng-template>

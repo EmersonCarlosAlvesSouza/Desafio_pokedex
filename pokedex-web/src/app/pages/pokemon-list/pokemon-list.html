@@ -1,0 +1,121 @@
+<!-- HERO -->
+
+<header class="hero">
+  <div class="container hero__inner">
+    <div class="hero__brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>Pokédex Digital</h1>
+        <p>Explore o mundo dos Pokémon com nossa Pokédex interativa. Descubra
+          informações detalhadas sobre cada criatura.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- faixa roxa + STATS dentro dela -->
+  <div class="hero__bar">
+    <div class="container">
+      <div class="hero__stats">
+        <div class="stat">
+          <div class="stat__num">{{ data?.count || 0 }}</div>
+          <div class="stat__label">Pokémon</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">18</div>
+          <div class="stat__label">Tipos</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">9</div>
+          <div class="stat__label">Gerações</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- CONTEÚDO -->
+<main class="container page">
+
+  <!-- Título + filtros (chips) -->
+  <div class="section-head">
+    <h2>Pokémon Descobertos</h2>
+
+    <div class="chips">
+      <button class="chip active">Todos os Tipos</button>
+      <button class="chip">Fogo</button>
+      <button class="chip">Água</button>
+      <button class="chip">Grama</button>
+      <button class="chip">Elétrico</button>
+      <!-- (decorativo; sua busca real continua com o input/select abaixo) -->
+    </div>
+  </div>
+
+  <!-- Filtros reais (nome + geração) -->
+  <form class="toolbar" (ngSubmit)="search()" #f="ngForm">
+    <input name="name" [(ngModel)]="name" placeholder="Buscar por nome" />
+    <select name="gen" [(ngModel)]="generation">
+      <option [ngValue]="null">Todas as gerações</option>
+      <option *ngFor="let g of [1,2,3,4,5,6,7,8,9]" [ngValue]="g">Geração {{g}}</option>
+    </select>
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+
+  <p *ngIf="loading" class="loading">Carregando…</p>
+
+  <!-- GRID DE CARDS -->
+  <div *ngIf="!loading && data" class="grid">
+    <article class="card" *ngFor="let p of data.results">
+      <!-- topo do card -->
+      <div class="card__top">
+        <span class="hash">#{{ p.id | number:'3.0-0' }}</span>
+
+        <div class="types">
+          <span class="type" *ngFor="let t of p.types">{{ t }}</span>
+        </div>
+      </div>
+
+      <!-- imagem -->
+      <div class="card__media">
+        <img *ngIf="p.sprite" [src]="p.sprite" [alt]="p.name" />
+      </div>
+
+      <!-- nome -->
+      <h3 class="card__title">{{ p.name | titlecase }}</h3>
+
+      <!-- barras (hp/atk/def) -->
+      <div class="stats">
+        <div class="bar">
+          <span>HP</span>
+          <div class="track">
+            <i class="fill" [style.width.%]="pct(p.stats?.hp ?? 0)"></i>
+          </div>
+          <em>{{ p.stats?.hp ?? '-' }}</em>
+        </div>
+
+        <div class="bar">
+          <span>Ataque</span>
+          <div class="track">
+            <i class="fill" [style.width.%]="pct(p.stats?.attack ?? 0)"></i>
+          </div>
+          <em>{{ p.stats?.attack ?? '-' }}</em>
+        </div>
+
+        <div class="bar">
+          <span>Defesa</span>
+          <div class="track">
+            <i class="fill" [style.width.%]="pct(p.stats?.defense ?? 0)"></i>
+          </div>
+          <em>{{ p.stats?.defense ?? '-' }}</em>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- paginação -->
+  <div *ngIf="data" class="pager">
+    <button (click)="prev()" [disabled]="!data.previous || page===1" class="btn ghost">Anterior</button>
+    <span>Página {{ page }}</span>
+    <button (click)="next()" [disabled]="!data.next" class="btn ghost">Próxima</button>
+  </div>
+</main>
