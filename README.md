@@ -16,7 +16,7 @@ Frontend: ⚠️ Parcialmente implementado. A listagem principal e a autenticaç
 Requisitos: Python 3.12+
 # 1. Criar e ativar ambiente virtual
 python -m venv .venv <br>
-.\.venv\Scripts\activate      # Windows
+.\.venv\Scripts\activate      # Windows <br>
 source .venv/bin/activate     # Linux/macOS
 
 # 2. Instalar dependências
@@ -30,7 +30,7 @@ python manage.py createsuperuser
 
 API disponível em: http://127.0.0.1:8000
 
-🔐 Autenticação
+# 🔐 Autenticação
 
 O sistema utiliza JWT (Access/Refresh Tokens):
 
@@ -87,7 +87,7 @@ Remove um Pokémon da equipe.
 GET /api/team (protegido)
 Lista a equipe atual do usuário.
 
-⚠️ Limitações Conhecidas
+## ⚠️ Limitações Conhecidas
 
 A PokéAPI utilizada para enriquecer os dados apresenta lentidão em horários de pico, com tempo de resposta superior a 4 minutos em alguns casos.
 
@@ -95,7 +95,7 @@ Isso afetou a experiência no frontend e impediu a conclusão de algumas funcion
 
 Apesar disso, todos os endpoints do backend estão completos e estáveis.
 
-📜 Licença
+## 📜 Licença
 
 Este projeto é livre para fins educacionais e acadêmicos.
 # 5. Rodar o servidor
