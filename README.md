@@ -1,4 +1,4 @@
-Pokédex API – Backend (Django/DRF) + Frontend (Angular)
+# Pokédex API – Backend (Django/DRF) + Frontend (Angular)
 
 Este repositório contém uma aplicação full-stack composta por:
 
